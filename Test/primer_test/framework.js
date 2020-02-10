@@ -16,3 +16,8 @@ function it(title, callback) {
         console.error(`x ${title}`);
     }
 }
+
+module.exports = {
+    expect,
+    it
+}
