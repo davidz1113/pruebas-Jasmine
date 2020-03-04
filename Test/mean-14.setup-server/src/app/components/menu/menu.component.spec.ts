@@ -1,17 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MenuComponent } from './menu.component';
-import { By } from '@angular/platform-browser';
+import { MenuComponent } from "./menu.component";
+import { By } from "@angular/platform-browser";
 
-fdescribe('MenuComponent', () => {
+fdescribe("MenuComponent", () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MenuComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -20,17 +19,25 @@ fdescribe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    const title = fixture.debugElement.query(By.css('h1'));
-    expect(title.nativeElement.innerHTML).toBe('eLearning Management System');
+  it("should create", () => {
+    const title = fixture.debugElement.query(By.css("h1"));
+    expect(title.nativeElement.innerHTML).toBe("eLearning Management System");
   });
 
-  it('Testing output', () => {
+  it("Testing output", () => {
     const val = true;
-    component.clicked.subscribe((result) => {
+    component.clicked.subscribe(result => {
       expect(result).toBe(val);
-    })
+    });
     component.clicked.next(val);
   });
 
+  it("Testing clikc", () => {
+    let buton = fixture.debugElement.query(By.css("button"));
+    console.log(component.counter);
+    expect(component.counter).toBe(0);
+    buton.triggerEventHandler("click", null);
+    console.log(component.counter);
+    expect(component.counter).toBe(1);
+  });
 });
